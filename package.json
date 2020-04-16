@@ -1,0 +1,15 @@
+{
+  "name": "test-js-pdf",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/pdf.js"
+  },
+  "author": "joerg@byjs.de",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "puppeteer": "^3.0.0"
+  }
+}
