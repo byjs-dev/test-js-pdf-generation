@@ -1,30 +1,10 @@
-const express = require('express');
-const app = express();
 const path = require('path');
 const puppeteer = require('puppeteer');
-const fs = require('fs');
 
-const dummySource = 'https://www.example.com';
+const dummySource = 'https://example.com';
 const dummyFile = 'example';
 
-const dir = './tmp';
-if (!fs.existsSync(dir)) {
-  fs.mkdirSync(dir);
-}
-
-app.get('/', (req, res) => {
-  res.send('use /download?source={html_page_url}&output={filename} to generate pdf and download it');
-});
-
-app.get('/download', (req, res) => {
-  generatePDF(req, res);
-});
-
-app.listen(3000, () => {
-  console.log(`application is running at: http://localhost:3000`);
-});
-
-async function generatePDF(req, res) {
+const generateAndDownload = async function (req, res, dir) {
   let source = req.query.source || dummySource;
   let output = `${req.query.output || dummyFile}.pdf`;
 
@@ -39,7 +19,10 @@ async function generatePDF(req, res) {
   await page.pdf({ path: path.join(dir, output), format: 'A4' });
   await browser.close();
 
+  console.log(`Generated PDF "${output}" saved in "${dir}"`);
+
   let fileLocation = await path.join(dir, output);
-  // await console.log(fileLocation);
   await res.download(fileLocation, output);
-}
+};
+
+module.exports.generateAndDownload = generateAndDownload;
