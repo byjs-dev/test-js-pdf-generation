@@ -20,28 +20,46 @@
     page-break-after: avoid;
   }
 
+  table,
+  figure {
+    page-break-inside: avoid;
+  }
+
   /*logo*/
   .page-header hgroup {
     left: initial;
     right: 0;
   }
 
-  table,
-  figure {
-    page-break-inside: avoid;
+  /* daten */
+  #c797 .tx-zep-gbm .machines .single {
+    max-width: 70%;
+    position: absolute;
+    top: 0;
+    left: 0;
   }
 
-  footer,
-  #cookieChoiceInfo,
-  #c796,
-  .header-navigation-mobile,
-  .cat-footer-links {
-    display: none !important;
-  }
-
+  /* ansprechpartner */
   div.partner {
     position: absolute;
     top: 0;
     right: 0;
+    transform: translateX(100%);
+  }
+
+  /* hide */
+  footer,
+  #cookieChoiceInfo,
+  #c796,
+  .l-breadcrumbs,
+  span.back-link.single-back-link,
+  .tabbed-tabs,
+  .ask-form,
+  .print,
+  .button-tomarklist,
+  .teaser.teaser-box,
+  .header-navigation-mobile,
+  .cat-footer-links {
+    display: none !important;
   }
 }

@@ -23,6 +23,7 @@ const generateAndDownload = async function (req, res, dir) {
 
   let fileLocation = await path.join(dir, output);
   await res.download(fileLocation, output);
+  //res.send('success');
 };
 
 module.exports.generateAndDownload = generateAndDownload;
